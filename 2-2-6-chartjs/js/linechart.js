@@ -1,7 +1,7 @@
 // Code for generating a Chart.js line chart
 
 async function getData() {
-    const response = await fetch('../data/test.csv');   // .. to move up one folder
+    const response = await fetch('./data/global-mean-temp.csv');   // .. to move up one folder
     const data = await response.text();                 // CSV to TEXT format
 
     const xYears = [];      // x-axis label = years values
@@ -13,7 +13,7 @@ async function getData() {
     // split('\n') - will separate the table into an array of individual rows
     // slice(start, end) - return a new array starting at index "start" up and including "end"
     const table = data.split('\n').slice(1);    // Split by line and remove first row
-    // console.log(table)
+    // console.log(table);
 
     table.forEach(row => {
         const columns = row.split(',');
@@ -24,10 +24,10 @@ async function getData() {
         yTemps.push(temp + 14);                     // Push temp values to array and reference to 0-deg. C
 
         const nhTemp = parseFloat(columns[2]);      // Convert NH temp. to float
-        yNHtemps.push(temp + 14);                   // Push temp values to array and reference to 0-deg. C
+        yNHtemps.push(nhTemp + 14);                 // Push NH temp values to array and reference to 0-deg. C
 
         const shTemp = parseFloat(columns[3]);      // Convert SH temp. to float
-        ySHtemps.push(temp + 14);                   // Push temp values to array and reference to 0-deg. C
+        ySHtemps.push(shTemp + 14);                 // Push SH temp values to array and reference to 0-deg. C
         
         console.log(year, temp, nhTemp, shTemp);
     });
@@ -86,13 +86,13 @@ async function createChart() {
                         },
                     },
                     ticks: {                      // x-axis tick mark properties
-                    callback: function(val, index) {
-                        // Set the tick marks at every 5 years
-                        return index % 5 === 0 ? this.getLabelForValue(val) : '';
-                    },
-                    font: {
-                        size: 14  
-                    },
+                        callback: function(val, index) {
+                            // Set the tick marks at every 5 years
+                            return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                        },
+                        font: {
+                            size: 14  
+                        },
                     },
                     grid: {                       // x-axis grid properties
                         color: '#6c767e'
@@ -108,7 +108,7 @@ async function createChart() {
                     },
                     ticks: {
                         min: 0,                   
-                        maxTicksLimit: 20,        // Actual value can be set dynamically
+                        maxTicksLimit: data.yTemps.length / 10,        // Actual value can be set dynamically
                         font: {
                             size: 12
                         }
