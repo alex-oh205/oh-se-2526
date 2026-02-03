@@ -1,0 +1,43 @@
+table th{
+    /*Keep column headers at the top as table is scrolled*/
+    position: sticky;
+    top: 0px; /* https://www.w3schools.com/cssref/pr_pos_top.php*/
+}
+
+.covid-table{
+    max-height: 250px;  /*prevent able from stretching to bottom of screen*/
+    overflow: auto;
+}
+
+.state{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.positives{
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.body{
+    background-color: rgb(90, 92, 92);
+}
+
+.chart {
+    width: 51%;
+    margin: auto;
+}
+
+.stats {
+    border: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+#chart-wrapper{
+    height: 480px;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    background-color: white !important;
+}
