@@ -79,9 +79,24 @@ def test():
     
     # If a GET request is made, check to see if the FB configuration has been provided. If not,
     # do nothing. If so, update the Firebase with the sensor data.
-    # The code for interfacing with the Arduino will be placed in the "else" block below
     else:
-        pass
+        if not config:
+            print("FB config is empty")
+        else:
+            # Take parameters from Arduino request & assign value to variable "value"
+
+            # print(config)
+            value = request.args.get('distance')
+
+            print('Distance: ' + value, flush=True)
+            
+            # Write Arduino data to Firebase
+            db.child('users/' + userID + '/data/' + timeStamp).update({key:value}, idToken)
+
+            # Increment key
+            key += 1
+        
+        return 'Success', 200
 
 # Run server on local IP address on port 5000
     # If you see the error: "The requested address is not valid in its context" it means
