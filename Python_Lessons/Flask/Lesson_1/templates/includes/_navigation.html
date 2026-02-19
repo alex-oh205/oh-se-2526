@@ -1,0 +1,25 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark nb-background-color">
+    <!-- lg = large breakpoint, navbar-dark = make text light, headerBG = custom css BG color -->
+    <div class="container"> <!-- Container will contain content in certain space in middle of page -->
+        <a href="#" class="navbar-brand">
+            <!--Update <img> src reference using {{url_for}} -->
+            <img src="{{ url_for('static', filename='/img/lambda-small.png') }}" alt="Logo" class="d-inline-block align-text-top w-50">
+        </a>
+
+        <!-- Hamburger Menu Button-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+        <div class="collapse navbar-collapse" id="navmenu">
+            <!-- Links to hamburger menu button -->
+            <ul class="navbar-nav ms-auto">  <!-- ms-auto provides auto margin spacing-->
+                <li class="nav-item">
+                    <a href="{{ url_for('about2') }}" class="nav-link hover-underline-animation nbMenuItem">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% raw %}
+        <!-- Jinja 2 Primer
+            {%....%} are for statements that will be executed (loops, conditionals, etc.)
+            {{....}} are for expressions used to print template output 
+                     (including references to external CSS, JS and image files)
+            {#....#} are for comments that are not included in the template output  -->
+        {% endraw %}
+
+        <!-- If a title is passed as a parameter, use that, otherwise use the default -->
+        {% if title %}
+            <title>Flask Tutorial - {{ title }}</title>
+        {% else %}
+            <title>Flask Tutorial</title>
+        {% endif %}
+
+    <!-- Bootstrap 5 CSS, Icons and custom CSS file links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+            crossorigin="anonymous">
+
+    <!-- Update custom style sheet link with:  {{url_for('static', filename='pathToFile')}}-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous"></script>
+</head>
+
+<body class="body">
+    <div class="container-lg">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark nb-background-color">
+            <!-- lg = large breakpoint, navbar-dark = make text light, headerBG = custom css BG color -->
+            <div class="container"> <!-- Container will contain content in certain space in middle of page -->
+                <a href="#" class="navbar-brand">
+                    <!--Update <img> src reference using {{url_for}} -->
+                    <img src="{{ url_for('static', filename='/img/lambda-small.png') }}" alt="Logo" class="d-inline-block align-text-top w-50">
+                </a>
+
+                <!-- Hamburger Menu Button-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <!-- Links to hamburger menu button -->
+                    <ul class="navbar-nav ms-auto">  <!-- ms-auto provides auto margin spacing-->
+                        <li class="nav-item">
+                            <a href="{{ url_for('about') }}" class="nav-link hover-underline-animation nbMenuItem">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="overview">
+            <div class="container">
+                <!-- Use a for loop to iterate through the posts in the python list passed as parameters -->
+                {% for post in posts %}
+                    <div class="row">
+                        <div class="col-sm-2 p-3">
+                            <!-- p-3 = padding -->
+                            <!-- Use the ~ to combine a static base path with a dynamic filename -->
+                            <img src="{{ url_for('static', filename='/img/' ~ post.image) }}" alt="Book Cover">
+                        </div>
+                        <div class="col-sm-10 p-3">
+                            <h1>{{ post.title }}</h1>
+                            <h2>By {{ post.author }}, {{ post.date_posted }}</h2>
+                            <h3>{{ post.content }}</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    
+    </div> <!-- Closing tag for outermost container -->
+    
+</body>
+</html>
+

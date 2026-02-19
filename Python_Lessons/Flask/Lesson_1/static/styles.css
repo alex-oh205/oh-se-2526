@@ -1,0 +1,83 @@
+/* ----------------- Class CSS ----------------- */
+
+.about{
+    margin: auto;
+    background-color: #dbe3e7;
+    min-height: 100vh;
+}
+
+
+.body{
+    background-color: rgb(90, 92, 92);
+    
+}
+
+.footer{
+    background-color: #b96c20;
+}
+
+.icon-white{            /* Arrow icon at bottom of page */
+    color: #FFFFFF;
+}
+
+.nb-background-color{   /* navbar background color */
+    background-color: #b96c20;
+}
+
+.nbMenuItem{            /* navbar link text properties */
+    font-size:25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: whitesmoke
+}
+
+.overview{              /* Overview section style properties */
+    background-color: #dbe3e7;
+    min-height: 100vh;
+}
+
+.overview-padding-left{
+    padding-left: 20px;
+}
+
+.overview-padding-right{  
+    padding-right: 20px;
+}
+
+/* ----------------- ID CSS ----------------- */
+
+/* -----------------Underline Animation CSS -----------------*/
+#chart-wrapper{
+    margin: auto;
+    padding: 10px; 
+    min-height: 400px;
+    background-color: whitesmoke !important;
+    justify-content: center;
+    align-items: center;  
+}
+
+
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /*color: #0087ca;*/
+  }
+  
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #eae6e6;
+    /*transform-origin: bottom right;*/
+    transition: transform 0.35s ease-out;
+}
+  
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    /*transform-origin: bottom left;*/
+}

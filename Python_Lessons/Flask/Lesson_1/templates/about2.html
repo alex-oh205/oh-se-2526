@@ -1,0 +1,12 @@
+<!-- 1. It inherits all of the code from layout.html
+     2. You can include html and JS scripts along with Jinja2 syntax -->
+
+{% extends 'layout.html' %} <!-- inherit layout.html code -->
+
+{% block about %}
+    <section class="about">
+        <div class="container">
+            <h1>About Page</h1>
+        </div>
+    </section>
+{% endblock about %}

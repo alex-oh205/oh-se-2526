@@ -1,0 +1,28 @@
+<!-- 1. index2.html is the landing page
+     2. It inherits all of the code from layout.html
+     3. You can include html and JS scripts along with Jinja2 syntax -->
+
+{% extends 'layout.html' %} <!-- inherit layout.html code -->
+
+{% block index_overview %} <!-- This code will be placed into the block called 'overview'
+                                that is referenced in layout.html -->
+    <section class="overview">
+        <div class="container">
+            <!-- Use a for loop to iterate through the posts in the python list passed as parameters -->
+            {% for post in posts %}
+                <div class="row">
+                    <div class="col-sm-2 p-3">
+                        <!-- p-3 = padding -->
+                        <!-- Use the ~ to combine a static base path with a dynamic filename -->
+                        <img src="{{ url_for('static', filename='/img/' ~ post.image) }}" alt="Book Cover">
+                    </div>
+                    <div class="col-sm-10 p-3">
+                        <h1>{{ post.title }}</h1>
+                        <h2>By {{ post.author }}, {{ post.date_posted }}</h2>
+                        <h3>{{ post.content }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock index_overview %}
