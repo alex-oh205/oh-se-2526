@@ -1,6 +1,6 @@
 # Filename:  app-test.py
 # Flask app for Flask + Firebase 
-# Coded By:  
+# Coded By:  Alex Oh
 
 # Flask app to test sending user's Firebase information to Flask & writing sample data usign Pyrebase4
 
@@ -102,4 +102,4 @@ def test():
     # If you see the error: "The requested address is not valid in its context" it means
     # IP address specified for the host is incorrect.
 if __name__ == '__main__':
-    app.run(debug=False, host='192.168.0.11', port=5000)
+    app.run(debug=False, host='10.81.230.226', port=5000)
